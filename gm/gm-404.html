@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 Error - Gmail</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    font-family:Arial, sans-serif;
+    background:#f2f2f2;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#202124;
+}
+
+/* CONTAINER */
+.container{
+    text-align:center;
+    max-width:500px;
+    padding:40px 20px;
+}
+
+/* GMAIL LOGO */
+.logo{
+    margin-bottom:30px;
+}
+
+.logo img{
+    width:120px;
+}
+
+/* ERROR NUMBER */
+.error-code{
+    font-size:120px;
+    font-weight:300;
+    color:#d93025;
+    line-height:1;
+}
+
+/* TITLE */
+h1{
+    font-size:28px;
+    font-weight:400;
+    margin-top:15px;
+    margin-bottom:15px;
+}
+
+/* DESCRIPTION */
+p{
+    font-size:15px;
+    color:#5f6368;
+    line-height:1.6;
+    margin-bottom:30px;
+}
+
+/* BUTTON */
+button{
+    background:#1a73e8;
+    color:white;
+    border:none;
+    padding:12px 28px;
+    font-size:14px;
+    border-radius:4px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#1765cc;
+}
+
+/* RESPONSIVE */
+@media(max-width:500px){
+
+    .error-code{
+        font-size:90px;
+    }
+
+    h1{
+        font-size:22px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- GMAIL LOGO -->
+    <div class="logo">
+        <img src="https://ssl.gstatic.com/ui/v1/icons/mail/rfr/logo_gmail_lockup_default_1x_r5.png" alt="Gmail">
+    </div>
+
+    <!-- ERROR -->
+    <div class="error-code">404</div>
+
+    <h1>Page not found</h1>
+
+    <p>
+        Sorry, the page you requested could not be found.
+        The link may be broken or the page may have been removed.
+    </p>
+
+    <button onclick="goHome()">Back to Gmail</button>
+
+</div>
+
+<script>
+
+function goHome(){
+    window.location.href = "https://mail.google.com/mail/u/0/#inbox";
+}
+
+</script>
+
+</body>
+</html>

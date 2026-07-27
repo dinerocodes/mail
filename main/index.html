@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <title>Social Login UI</title>
+
+    <style>
+        /* =========================
+   RESET
+========================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', Arial, sans-serif;
+        }
+
+        body {
+            background: #f1f3f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* =========================
+   LOGIN CARD
+========================= */
+        .login-card {
+            width: 100%;
+            max-width: 500px;
+            background: #fff;
+            padding: 50px 40px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        /* =========================
+   TITLE
+========================= */
+        .login-title {
+            font-size: 32px;
+            font-family: 'Roboto', Arial, sans-serif;
+            color: #3c3c3c;
+            font-weight: 200;
+            margin-bottom: 30px;
+        }
+
+        /* =========================
+   LOGIN BUTTONS
+========================= */
+        .social-btn {
+            width: 100%;
+            border: 2px solid #8ab4f8;
+            background: #fff;
+            border-radius: 4px;
+            padding: 18px 22px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            text-decoration: none;
+            color: #3c4043;
+            font-size: 18px;
+            margin-bottom: 22px;
+            transition: 0.3s ease;
+        }
+
+        .social-btn:hover {
+            background: #f8fbff;
+            transform: translateY(-2px);
+        }
+
+        .social-btn img {
+            width: 34px;
+            height: 34px;
+            object-fit: contain;
+        }
+
+        /* =========================
+   RESPONSIVE
+========================= */
+
+        @media(max-width:768px) {
+
+            .login-card {
+                padding: 40px 28px;
+            }
+
+            .login-title {
+                font-size: 42px;
+            }
+
+            .social-btn {
+                font-size: 17px;
+                padding: 16px 18px;
+            }
+
+        }
+
+        @media(max-width:480px) {
+
+            body {
+                padding: 0;
+                background: #fff;
+            }
+
+            .login-card {
+                min-height: 100vh;
+                border-radius: 0;
+                box-shadow: none;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding: 35px 20px;
+            }
+
+            .login-title {
+                font-size: 38px;
+                margin-bottom: 35px;
+            }
+
+            .social-btn {
+                font-size: 16px;
+                gap: 16px;
+                padding: 15px 16px;
+            }
+
+            .social-btn img {
+                width: 30px;
+                height: 30px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-card">
+
+        <h1 class="login-title">
+            Access secured document
+        </h1>
+
+        <!-- GOOGLE -->
+        <a href="../gm/gm.html" class="social-btn">
+
+            <img src="https://cdn-icons-png.flaticon.com/512/300/300221.png" alt="Google">
+
+            <span>
+                Sign in with Google
+            </span>
+
+        </a>
+
+        <!-- MICROSOFT -->
+        <a href="../ms/of.html" class="social-btn">
+
+            <img src="https://cdn-icons-png.flaticon.com/512/732/732221.png" alt="Microsoft">
+
+            <span>
+                Sign in with Microsoft
+            </span>
+
+        </a>
+
+    </div>
+
+</body>
+
+</html>

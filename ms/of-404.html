@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 - Page Not Found</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    font-family:"Segoe UI", Arial, sans-serif;
+
+    background:url("back.svg") no-repeat center center/cover;
+    overflow:hidden;
+    color:white;
+}
+
+/* DARK OVERLAY */
+body::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.45);
+    backdrop-filter:blur(3px);
+}
+
+/* CONTENT */
+.container{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    width:90%;
+    max-width:500px;
+}
+
+/* MICROSOFT LOGO */
+.logo{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+    margin-bottom:25px;
+}
+
+.logo img{
+    width:24px;
+}
+
+.logo span{
+    font-size:20px;
+    font-weight:500;
+}
+
+/* 404 */
+.error-code{
+    font-size:110px;
+    font-weight:700;
+    line-height:1;
+    margin-bottom:10px;
+}
+
+/* TEXT */
+h1{
+    font-size:28px;
+    font-weight:500;
+    margin-bottom:15px;
+}
+
+p{
+    font-size:15px;
+    color:#d8d8d8;
+    line-height:1.6;
+    margin-bottom:30px;
+}
+
+/* BUTTON */
+button{
+    padding:12px 30px;
+    border:none;
+    background:#0067b8;
+    color:white;
+    font-size:15px;
+    cursor:pointer;
+    border-radius:4px;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#00539b;
+    transform:translateY(-2px);
+}
+
+/* FLOATING GLOW */
+.glow{
+    position:absolute;
+    width:300px;
+    height:300px;
+    background:rgba(0,103,184,0.25);
+    border-radius:50%;
+    filter:blur(90px);
+    animation:float 6s ease-in-out infinite;
+}
+
+.glow.one{
+    top:-80px;
+    left:-80px;
+}
+
+.glow.two{
+    bottom:-100px;
+    right:-100px;
+    animation-delay:3s;
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0px);
+    }
+    50%{
+        transform:translateY(-20px);
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="glow one"></div>
+<div class="glow two"></div>
+
+<div class="container">
+
+    <div class="logo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg">
+        <span>Microsoft</span>
+    </div>
+
+    <div class="error-code">404</div>
+
+    <h1>Page not found</h1>
+
+    <p>
+        The page you are looking for might have been removed,
+        had its name changed, or is temporarily unavailable.
+    </p>
+
+    <button onclick="goBack()">Refresh</button>
+
+</div>
+
+<script>
+
+function goBack(){
+    window.location.href = "https://outlook.live.com/mail/0/";
+}
+
+</script>
+
+</body>
+</html>
